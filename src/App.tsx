@@ -12,7 +12,17 @@ function App() {
   
   return (
     <>
-      
+      <div className='main-container'>
+        <div className='header'>
+          <h1>Stock exchange</h1>
+        </div>
+        <div className='favorite-search'>
+          <h1>Favorite stocks and search</h1>
+        </div>
+        <div className='stock-data'>
+          <h1>Stock data</h1>
+        </div>
+      </div>
     </>
   )
 }
