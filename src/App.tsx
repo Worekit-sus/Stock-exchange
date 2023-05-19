@@ -1,15 +1,96 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
+
+
+const Lista: {time: number, open: number,high: number,low: number, close: number}[] = [];
 
 function App() {
 
-  // OG9LS4THFHZYBROP
+  // Coingeko
   // dane spółki, symbol 
   // API - alpha vantage
   // wykres do zmiany cen dzisiaj, tydzien, miesiąc, rok - biblioteka highcharts wrapper
   // oraz typ wykresu line, area, candlestick, sparkliness
   // lista ulubionych spółek
-  
+  [
+    "btc",
+    "eth",
+    "ltc",
+    "bch",
+    "bnb",
+    "eos",
+    "xrp",
+    "xlm",
+    "link",
+    "dot",
+    "yfi",
+    "usd",
+    "aed",
+    "ars",
+    "aud",
+    "bdt",
+    "bhd",
+    "bmd",
+    "brl",
+    "cad",
+    "chf",
+    "clp",
+    "cny",
+    "czk",
+    "dkk",
+    "eur",
+    "gbp",
+    "hkd",
+    "huf",
+    "idr",
+    "ils",
+    "inr",
+    "jpy",
+    "krw",
+    "kwd",
+    "lkr",
+    "mmk",
+    "mxn",
+    "myr",
+    "ngn",
+    "nok",
+    "nzd",
+    "php",
+    "pkr",
+    "pln",
+    "rub",
+    "sar",
+    "sek",
+    "sgd",
+    "thb",
+    "try",
+    "twd",
+    "uah",
+    "vef",
+    "vnd",
+    "zar",
+    "xdr",
+    "xag",
+    "xau",
+    "bits",
+    "sats"
+  ]
+
+  const [stock, setStock] = useState("bitcoin");
+  const [currency, setCurrency] = useState("usd");
+  const [days, setDays] = useState("1");
+  const [data, setData] = useState(Lista);
+  const [list, setList] = useState(Lista);
+
+  // przyp;isać do jakiejś list z obiektów czy coś no i charciki oraz autocompleta z currensami
+  useEffect(() => {
+    fetch(`https://api.coingecko.com/api/v3/coins/${stock}/ohlc?vs_currency=${currency}&days=${days}`)
+    .then(response => response.json())
+    .then(data => setData(data))
+    .catch(error => console.log(error));
+  },[])
+
+  console.log(data);
   return (
     <>
       <div className='main-container'>
@@ -45,9 +126,9 @@ function App() {
           </div>
         </div>
         <div className='stock-data'>
-          <h1>Stock data</h1>
-          <h1>img BTC +0.60%</h1>
-          <h4>1 BTC =        126.2149534 PLN</h4>
+
+          
+
         </div>
       </div>
     </>
